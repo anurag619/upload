@@ -1,5 +1,10 @@
 # Django settings for upload project.
 
+import os
+PROJECT_PATH = os.getcwd()
+DATABASE_PATH = os.path.join(PROJECT_PATH, 'upload.db')
+
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -12,7 +17,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'upload.db',                      # Or path to database file if using sqlite3.
+        'NAME': DATABASE_PATH,                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
@@ -50,7 +55,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = '/home/anurag/project/upload/file/media/'
+MEDIA_ROOT = os.path.join(PROJECT_PATH, 'file/media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -63,12 +68,14 @@ MEDIA_URL = '/media/'
 # Example: "/var/www/example.com/static/"
 STATIC_ROOT = ''
 
+STATIC_PATH = os.path.join(PROJECT_PATH,'file/static')
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+    STATIC_PATH,
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -107,7 +114,9 @@ ROOT_URLCONF = 'upload.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'upload.wsgi.application'
 
-TEMPLATE_DIRS = ( "/home/anurag/project/upload/file/template/"
+TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'file/template')
+
+TEMPLATE_DIRS = ( TEMPLATE_PATH
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
