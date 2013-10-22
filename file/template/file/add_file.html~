@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>upload app</title>
+    </head>
+
+    <body>
+        
+
+  <!-- Upload form.-->
+
+        <form action="/file/add_file/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>{{ form.non_field_errors }}</p>
+			<p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+			<p>
+				{{ form.docfile.errors }}
+				{{ form.docfile }}
+			</p>
+            <input type="submit" value="Upload" />
+            </form>
+
+    </body>
+</html> 
+
+
+
+       
