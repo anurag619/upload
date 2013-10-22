@@ -5,28 +5,11 @@
     </head>
 
     <body>
-        <!-- List of uploaded documents -->
-		{% if docs %}
-			<ul>
-			{% for files in docs %}
-				<li><a href="{{ docs.docfile.url }}">{{ docs.docfile.name }}</a></li>
-			{% endfor %}
-			</ul>
-		{% else %}
-			<p>No documents.</p>
-		{% endif %}
-
-  <!-- Upload form.-->
 
         <form action="/file/add_file/" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <p>{{ form.non_field_errors }}</p>
-			<p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
-			<p>
-				{{ form.docfile.errors }}
-				{{ form.docfile }}
-			</p>
-            <input type="submit" value="Upload" />
+            
+            <input type="submit" value="submit" />
             </form>
 
     </body>
